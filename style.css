@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+/*  Global Classes  */
+.center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.stretch {
+    width: 100%;
+}
+
+/* The titel */
+.gameTitel {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+/* System text  */
+.systemText {
+    margin: 0.5rem;
+}
+
+/*  Css for the user input */
+.inputDiv {
+    position: fixed;
+    bottom: 0;
+
+    margin: 1.5rem 0 1.5rem 0;
+}
+.userInput {
+    width: 90%;
+    height: 2rem;
+    left: 0;
+}
