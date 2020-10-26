@@ -32,15 +32,22 @@ function userInput(form) {
 
     if (textIn == "mage") {
         listItem.push(textIn);
-        text = "Are you sure?"  //ADD INFO MAGE 
-        let answerPromt = prompt(text).toLowerCase();
-        if (answerPromt == 'no') {
-            startGame();
-        }
-        else {
-            text = "You are a talented mage, sitting in a liberary, holding a tome of the arcane arts. <br/> Would you like to read the tome or explore the library?";
-            listItem.push(text);
-            respons();
+        text = "Are you sure? Yes/No"
+
+        promtIncorrect = true;
+        while (promtIncorrect) { // Practiced making prompt and while loop
+
+            let answerPrompt = prompt(text).toLowerCase();
+            if (answerPrompt == 'no') {
+                promtIncorrect = false;
+                startGame();
+            }
+            else if (answerPrompt == "yes") {
+                promtIncorrect = false;
+                text = "You are a talented mage, sitting in a liberary, holding a tome of the arcane arts. <br/> Would you like to <strong>read</strong> the tome or <strong>explore</strong> the library?";
+                listItem.push(text);
+                respons();
+            }
         }
     }
     if (textIn == "read" && listItem.includes("mage")) {
@@ -49,13 +56,13 @@ function userInput(form) {
         listItem.push(text);
         respons();
 
-        // VICTORY! ADD VICTORY screen
+        // VICTORY! 
 
 
     }
     if (textIn == "explore" && listItem.includes("mage")) {
         listItem.push(textIn);
-        text = "You explore the library. Huge bookcases towering around you. The halls of the library seem to endlessly go on. <br/> All of the sudden, a group of goblins show up, looking at you with their empty eyes. <br/> As a mage you realise that fighthig the goblins might result in damages to the library... <br/> Would you like to try to befriend the goblins or attack them?";
+        text = "You explore the library. Huge bookcases towering around you. The halls of the library seem to endlessly go on. <br/> All of the sudden, a group of goblins show up, looking at you with their empty eyes. <br/> As a mage you realise that fighthig the goblins might result in damages to the library... <br/> Would you like to try to <strong>befriend</strong> the goblins or <strong>attack</strong> them?";
         listItem.push(text);
         respons();
 
@@ -70,7 +77,7 @@ function userInput(form) {
     if (textIn == "befriend" && listItem.includes("explore")) {
         listItem.push(textIn);
         text = "You clear your troat, *erhmm*. <br/> '- Greetings, short green ones, what brings you to this library?' <br/> The goblin closes to you looks at you and responds '- We are here to learn about the language of the javasqriptians!' <br/> '- Oh word?' you say as the goblins seems to ready their weapons for an attack. ' - Then all you need to know is that you can never use to many if-statements' <br/> Your words seems to hurt the golins, as if this is the dumbest thing they've ever heard. You reapet yourself. <br/> ' - I really mostly use anything except if statements in this project atleast' you scream at the goblins. Upon hearing this meta-statement the goblins all selfcombust and fall down in small piles of ash.<br/><br/> VICTORY. You have defeated the goblins using only your wits, this is for sure the pinacle of you career as a mage.";
-        listItem.push(text); 
+        listItem.push(text);
         respons();
         //Victory! 
     }
@@ -78,8 +85,42 @@ function userInput(form) {
     //#endregion
 
     //#region Barbarian -- Barb quesline starts here
-    else if (textIn == "barbarian") {
-        console.log("barb")
+    if (textIn == "barbarian") {
+        listItem.push(textIn);
+        text = "Are you sure? Yes/No"
+
+        promtIncorrect = true;
+        while (promtIncorrect) { // Practiced making prompt and while loop
+
+            let answerPrompt = prompt(text).toLowerCase();
+            if (answerPrompt == 'no') {
+                promtIncorrect = false;
+                startGame();
+            }
+            else if (answerPrompt == "yes") {
+                promtIncorrect = false;
+                text = "You take another sip from your ale. Life as an orc barbarian is not that complicated. Drinking, pillaging and robbing sweet old ladies. <br/> You are drunk, very drunk. Maybe you should find someone to <strong>fight</strong>, or maybe <strong>go east</strong> and look for your barbarian clan?";
+                listItem.push(text);
+                respons();
+            }
+        }
+    }
+    if (textIn == "fight" || textIn == "go east" && listItem.includes("barbarian")) {
+        listItem.push(textIn);
+        text = "Even though a voice in you head is trying to tell you to do something, you feel the need to drink more. You order in four more beers and in one chugg, down all four. <br/> You start feeling dizzy. Maybe you should <strong>drink water</strong> or <strong>lay down</strong>.";
+        listItem.push(text);
+        respons();
+    }
+    if (textIn == "drink water" || textIn == "lay down" && listItem.includes("barbarian")) {
+        listItem.push(textIn);
+        text = "The voice in your head is really trying to get your dumb orc brain to stop this decadence, but you crave more of that sweet sweet Norrlands Guld. ' - Barkeep! Four more ale!' you hear yourself shout. You need to <strong>stop drinking</strong>.";
+        listItem.push(text);
+        respons();
+    }
+    if (textIn == "stop drinking" && listItem.includes("barbarian")) {
+        listItem.push(textIn);
+        text = "As you down the last ale, you feel the darkness catching up to you. All the horrible things you've done in your life flash before your eyes as you take you last breath. The ethernal flames of hell awaits. <br/><br/> DEATH! You died from alcohol poisoning, but no one will miss your sorry ass.";
+        listItem.push(text);
         respons();
     }
 
@@ -87,11 +128,72 @@ function userInput(form) {
     //#endregion
 
     //#region Rogue -- Rogue questline starts here 
-    else if (textIn == "rogue" && !listItem.includes("mage") && !listItem.includes("barbarian")) {
+    if (textIn == "rogue" && !listItem.includes("mage") && !listItem.includes("barbarian")) {
         console.log("rogue")
+        listItem.push(textIn);
+        text = "Are you sure? Yes/No"
+        listItem.push(text);
+        promtIncorrect = true;
+        while (promtIncorrect) { // practiced makining a while-loop with a prompt
+            let answerPrompt = prompt(text).toLowerCase();
+            if (answerPrompt == 'no') {
+                promtIncorrect = false;
+                startGame();
+            }
+            else if (answerPrompt == "yes") {
+                promtIncorrect = false;
+                text = "From the shadows, you apear. A slender elf with two pointy daggers hanging from each side of your waist. You feel hungry and exhausted, not alot of prey in the last couple of days. <br/> You need to find something to eat. You know that there is an inn just around the corner, but they have good security. There is also a market across town. Do you want to go to the <strong>market</strong> or the <strong>inn</strong>?";
+                listItem.push(text);
+                respons();
+            }
+        }
+
+    }
+
+    if (textIn == "market" && listItem.includes("rogue")) {
+        listItem.push(textIn);
+        text = "";
+        listItem.push(text)
         respons();
     }
- 
+
+
+    if (textIn == "the inn" && listItem.includes("rogue")) {
+        listItem.push(textIn);
+        text = "";
+        listItem.push(text);
+        respons();
+
+        // VICTORY! ADD VICTORY screen
+
+
+    }
+    if (textIn == "explore" && listItem.includes("rogue")) {
+        listItem.push(textIn);
+        text = "";
+        listItem.push(text);
+        respons();
+
+    }
+    if (textIn == "attack" && listItem.includes("explore")) {
+        listItem.push(textIn);
+        text = "";
+        listItem.push(text);
+        respons();
+        // DEATH! 
+    }
+    if (textIn == "befriend" && listItem.includes("explore")) {
+        listItem.push(textIn);
+        text = "";
+        listItem.push(text);
+        respons();
+        //Victory! 
+    }
+
+
+
+
+
     //#endregion
 }
 //#endregion
@@ -104,12 +206,12 @@ function respons() {
     let textPrint = "";
     let copyOfListItem = listItem.slice(); //Wth is slice? https://stackoverflow.com/questions/7486085/copy-array-by-value
     let x = copyOfListItem.length;
-    
-    
+
+
     /**
      * A really complicated way to add > inb4 user inputs 
      */
-    for(let i=1; i<x; i+=2){
+    for (let i = 1; i < x; i += 2) {
         copyOfListItem[i] = "> " + copyOfListItem[i];
     }
 
@@ -124,6 +226,7 @@ function respons() {
      * Writes the text in the DOM 
      */
     document.getElementById("systemText").innerHTML = textPrint;
+    document.getElementById("inputField").value = ""; // clears the input field 
 
 }
 
