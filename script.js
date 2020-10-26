@@ -82,7 +82,7 @@ function userInput(form) {
         console.log("barb")
         respons();
     }
-    
+
 
     //#endregion
 
@@ -96,13 +96,35 @@ function userInput(form) {
 }
 //#endregion
 
+
+/**
+ * Sends the array with user inputs and sytems responses to the DOM
+ */
 function respons() {
     let textPrint = "";
-    listItem.forEach(element => {
-        textPrint += element + " <br/>";
+    let copyOfListItem = listItem.slice(); //Wth is slice? https://stackoverflow.com/questions/7486085/copy-array-by-value
+    let x = copyOfListItem.length;
+    
+    
+    /**
+     * A really complicated way to add > inb4 user inputs 
+     */
+    for(let i=1; i<x; i+=2){
+        copyOfListItem[i] = "> " + copyOfListItem[i];
+    }
 
-    });
+    /** 
+     * Adds a break to the lines that are written into the DOM and prints the list
+     */
+    for (let item of copyOfListItem) {
+        textPrint += item + " <br/>";
+    }
+
+    /**
+     * Writes the text in the DOM 
+     */
     document.getElementById("systemText").innerHTML = textPrint;
+
 }
 
 
