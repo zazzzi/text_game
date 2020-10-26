@@ -16,24 +16,24 @@
 <body>
     <h1 class="gameTitel flex center">The Adventure</h1>
     <div class="gameContainer">
-        <div class="systemText">
-            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dolorem perferendis magni sunt rem
-                pariatur esse sed! Deleniti animi neque recusandae, nulla, ad, in reprehenderit laborum sint excepturi
-                doloribus dignissimos.
+        <div id="systemText" class="systemTextCSS">
 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim unde dolores minus perspiciatis odio cum
-                tenetur quibusdam culpa consectetur cumque, hic non, molestias nesciunt optio dolor. Voluptatem, aperiam
-                corporis. Autem?
-
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas a, facilis quibusdam illo voluptate
-                magnam iste enim repellat, dolorem, totam blanditiis? Similique illum at veritatis autem maxime, sequi
-                pariatur. Nesciunt!
+            <p> Welcome to the greatest adventure ever. Press the start button to begin your adventure.
             </p>
         </div>
 
 
         <div class="inputDiv stretch flex center">
-            <input class="userInput" type="text" placeholder="Input answer here...">
+
+            <button onclick="startGame()" class="startButton">Start</button>
+
+            <form id="userInput" class="stretch center" action="">
+
+                <input id="inputField" class="userInputStyle" type="text" placeholder="Input answer here..."> 
+                <input type="button" id="buttonSendInput" onclick="userInput(this.form)" value="Send..">
+
+            </form>
+
         </div>
     </div>
 

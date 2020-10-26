@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body {
@@ -29,18 +30,24 @@ html, body {
 }
 
 /* System text  */
-.systemText {
+.systemTextCSS {
     margin: 0.5rem;
+    font-size: large;
 }
 
-/*  Css for the user input */
+/*  Css for the start button and user input */
+.startButton {
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+}
 .inputDiv {
     position: fixed;
     bottom: 0;
+ 
 
     margin: 1.5rem 0 1.5rem 0;
 }
-.userInput {
+.userInputStyle {
     width: 90%;
     height: 2rem;
     left: 0;
