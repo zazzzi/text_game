@@ -102,6 +102,7 @@ function userInput(form) {
                 text = "You take another sip from your ale. Life as an orc barbarian is not that complicated. Drinking, pillaging and robbing sweet old ladies. <br/> You are drunk, very drunk. Maybe you should find someone to <strong>fight</strong>, or maybe <strong>go east</strong> and look for your barbarian clan?";
                 listItem.push(text);
                 respons();
+                // DEATH!
             }
         }
     }
@@ -120,6 +121,12 @@ function userInput(form) {
     if (textIn == "stop drinking" && listItem.includes("barbarian")) {
         listItem.push(textIn);
         text = "As you down the last ale, you feel the darkness catching up to you. All the horrible things you've done in your life flash before your eyes as you take you last breath. The ethernal flames of hell awaits. <br/><br/> DEATH! You died from alcohol poisoning, but no one will miss your sorry ass.";
+        listItem.push(text);
+        respons();
+    }
+    if (textIn == "ignore" && listItem.includes("market")) {
+        listItem.push(textIn);
+        text = "";
         listItem.push(text);
         respons();
     }
@@ -152,42 +159,39 @@ function userInput(form) {
 
     if (textIn == "market" && listItem.includes("rogue")) {
         listItem.push(textIn);
-        text = "";
+        text = "On your way to the market you hear a commotion. You see an sweet old lady being robbed by two shady looking guys with swords. The old lady is dressed like a noblewoman.<br/> You the rogue in you sees the opportunity to steel the old ladys purse while she is struggeling with the robbers, but maybe you should <strong>help</strong> the old lady? Or even better, <strong>ignore</strong> the whole thing?";
         listItem.push(text)
         respons();
     }
 
 
-    if (textIn == "the inn" && listItem.includes("rogue")) {
+    if (textIn == "help" && listItem.includes("market")) {
         listItem.push(textIn);
-        text = "";
+        text = "You draw your dagger, and in one swoop you stab one of the men in the spine. The other robber shifts his focus to you, swinging his sword trying to hit you but you sidestep doging his blow. You slice his troat and wipe your blades before his body hits the floor.<br/> The lady looks to you, ' - Thank you, I though i was a gonner, please let me give you some gold for your troubles.' Do you <strong>accept</strong> or <strong>decline</strong> the reward?";
         listItem.push(text);
         respons();
-
-        // VICTORY! ADD VICTORY screen
-
+    }
+    if (textIn == "accept" && listItem.includes("help")) {
+        listItem.push(textIn);
+        text = "The old lady gives you a small bag of gold and thanks you once again. You leave her, knowing that you did good today. <br/><br/> VICTORY! Your good deeds payed of in the end, and tonight you will feast!";
+        listItem.push(text);
+        respons();
+        //VICTORY
 
     }
-    if (textIn == "explore" && listItem.includes("rogue")) {
+    if (textIn == "decline" && listItem.includes("help")) {
         listItem.push(textIn);
-        text = "";
+        text = "You look the lady in the eyes. There is a connection between you, none of you can deny it. ' - I can take gold from such a hot old lady' you say. ' - Single hot old lady.' she corrects you. <br/><br/> VICTORY! Not only did you do good, but you found the love of your life. You and the old noblewoman lives happily ever after.";
         listItem.push(text);
         respons();
-
+        // VICTORY! 
     }
-    if (textIn == "attack" && listItem.includes("explore")) {
+    if (textIn == "steal" && listItem.includes("market")) {
         listItem.push(textIn);
-        text = "";
+        text = "You sneak up on the group, trying to find the right time to swoop in and steal the old ladys bag. You're just about to snatch the bag, but unbeknownst to you and your fellow robbers, the old lady is a karate master.<br/> The grandma' kicks all of your asses with one hand behind her back. You fall down to the ground and hear the faint sound of guards coming around the corner. <br/><br/> ARRESTED. Some old ladies knows karate, never forget that.";
         listItem.push(text);
         respons();
-        // DEATH! 
-    }
-    if (textIn == "befriend" && listItem.includes("explore")) {
-        listItem.push(textIn);
-        text = "";
-        listItem.push(text);
-        respons();
-        //Victory! 
+        //DEATH
     }
 
 
