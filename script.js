@@ -5,47 +5,45 @@
 let listItem = [];
 
 
-
 /**
  * Starts the game if user presses the Start html button and clears array
  */
 function startGame() {
     listItem = [];
     let qtClass = document.getElementById('systemText').innerHTML =
-        'In this great adventure, what are you? A mage, a barbarian or a rogue?';
+        'In this great adventure, what are you? A <strong>mage</strong>, a <strong>barbarian</strong> or a <strong>rogue</strong>?';
     listItem.push(qtClass);
-
-
+    document.getElementById("titel").innerHTML = "The Adventure";
 }
 
 /**
  * Function that records the user inputs 
- * @param {User-Input} form 
+ * @param {HTMLFormElement} form 
  */
 function userInput(form) {
     textIn = form.inputField.value.toLowerCase();
 
+    //#region All the different if-statements for the whole quest line
 
-    //#region All the different if-statements for the whole quesline
-
-    //#region Mage -- The mage questline starts here
+    //#region Mage -- The mage quest line starts here
 
     if (textIn == "mage") {
         listItem.push(textIn);
         text = "Are you sure? Yes/No"
 
-        promtIncorrect = true;
-        while (promtIncorrect) { // Practiced making prompt and while loop
+        promptIncorrect = true;
+        while (promptIncorrect) { // Practiced making prompt and while loop
 
             let answerPrompt = prompt(text).toLowerCase();
             if (answerPrompt == 'no') {
-                promtIncorrect = false;
+                promptIncorrect = false;
                 startGame();
             }
             else if (answerPrompt == "yes") {
-                promtIncorrect = false;
+                promptIncorrect = false;
                 text = "You are a talented mage, sitting in a library, holding a tome of the arcane arts. <br/> Would you like to <strong>read</strong> the tome or <strong>explore</strong> the library?";
                 listItem.push(text);
+                document.getElementById("titel").innerHTML = "The Mage";
                 respons();
             }
         }
@@ -84,23 +82,24 @@ function userInput(form) {
 
     //#endregion
 
-    //#region Barbarian -- Barb quesline starts here
+    //#region Barbarian -- Barb quest line starts here
     if (textIn == "barbarian") {
         listItem.push(textIn);
         text = "Are you sure? Yes/No"
 
-        promtIncorrect = true;
-        while (promtIncorrect) { // Practiced making prompt and while loop
+        promptIncorrect = true;
+        while (promptIncorrect) { // Practiced making prompt and while loop
 
             let answerPrompt = prompt(text).toLowerCase();
             if (answerPrompt == 'no') {
-                promtIncorrect = false;
+                promptIncorrect = false;
                 startGame();
             }
             else if (answerPrompt == "yes") {
-                promtIncorrect = false;
+                promptIncorrect = false;
                 text = "You take another sip from your ale. Life as an orc barbarian is not that complicated. Drinking, pillaging and robbing sweet old ladies. <br/> You are drunk, very drunk. Maybe you should find someone to <strong>fight</strong>, or maybe <strong>go east</strong> and look for your barbarian clan?";
                 listItem.push(text);
+                document.getElementById("titel").innerHTML = "The Barbarian";
                 respons();
                 // DEATH!
             }
@@ -124,33 +123,29 @@ function userInput(form) {
         listItem.push(text);
         respons();
     }
-    if (textIn == "ignore" && listItem.includes("market")) {
-        listItem.push(textIn);
-        text = "";
-        listItem.push(text);
-        respons();
-    }
+ 
 
 
     //#endregion
 
-    //#region Rogue -- Rogue questline starts here 
+    //#region Rogue -- Rogue quest line starts here 
     if (textIn == "rogue" && !listItem.includes("mage") && !listItem.includes("barbarian")) {
         console.log("rogue")
         listItem.push(textIn);
         text = "Are you sure? Yes/No"
         listItem.push(text);
-        promtIncorrect = true;
-        while (promtIncorrect) { // practiced making a while-loop with a prompt
+        promptIncorrect = true;
+        while (promptIncorrect) { // practiced making a while-loop with a prompt
             let answerPrompt = prompt(text).toLowerCase();
             if (answerPrompt == 'no') {
-                promtIncorrect = false;
+                promptIncorrect = false;
                 startGame();
             }
             else if (answerPrompt == "yes") {
-                promtIncorrect = false;
+                promptIncorrect = false;
                 text = "From the shadows, you appear. A slender elf with two pointy daggers hanging from each side of your waist. You feel hungry and exhausted, not a lot of prey in the last couple of days. <br/> You need to find something to eat. You know that there is an inn just around the corner, but they have good security. There is also a market across town. Do you want to go to the <strong>market</strong> or the <strong>inn</strong>?";
                 listItem.push(text);
+                document.getElementById("titel").innerHTML = "The Rogue";
                 respons();
             }
         }
@@ -193,9 +188,37 @@ function userInput(form) {
         respons();
         //DEATH
     }
-
-
-
+    if (textIn == "ignore" && listItem.includes("market")) {
+        listItem.push(textIn);
+        text = "You continue to the market and arrive on a large open square. There are a lot of stands on the market, but one catches your eyes. A small stand in an empty part of the market, with no one behind the stall.<br/> Upon further inspection you see a pie on the counter of the stand, and you can feel your stomach growling. There is also a chest behind the stand, the chest looks old and weathered down, but there is a brand new padlock hanging on the hatch of the chest. Do you want to <strong>pick the lock</strong> or still your hunger and <strong>steal the pie</strong>?";
+        listItem.push(text);
+        respons();
+    }
+    if (textIn == "steal the pie" && listItem.includes("ignore")) {
+        listItem.push(textIn);
+        text = "You hastily grab the pie and run for the nearest back alley. You go hard on the pie, barely chewing each bite. After gulping down the whole pie, you feel your stomach vibrating. Oh no... Time to find the nearest bathroom...<br/><br/><s>DEATH</s> <s>DEFEAT</s> DIARRHEA... This was not a good pie, maybe you should think twice about eating stuff that you find on random markets. Also you're gluten intolerant, how could you forget about that?   ";
+        listItem.push(text);
+        respons();
+        //DEATH 
+    }
+    if (textIn == "pick the lock" && listItem.includes("ignore")) {
+        listItem.push(textIn);
+        text = "You reach in to your pockets, and grab your lock-picks. You are a master rogue, picking a padlock is as simple as breathing. The lock clicks and you open the chest. In the chest you find a priceless relic, a first edition of 'C# for Dummies'.<br/> You know that the power that this relic holds is mind boggling and the value is infinite, at least for people who haven't heard about Codeacadamy.<br/><br/> VICTORY! Selling this relic on the black market is gonna be your road to infinite wealth. Or you could learn C#, what do I know, it's super later and my brain isn't really working right now.";
+        listItem.push(text);
+        respons();
+    }
+    if (textIn == "inn" && listItem.includes("rogue")) {
+        listItem.push(textIn);
+        text = "You enter the inn. The place if full of people, stealing from the innkeeper is going to be next to impossible. You see a drunk orc barbarian sitting by the bar. Do you want to <strong>greet the orc</strong> or go to the <strong>market</strong>?";
+        listItem.push(text);
+        respons();
+    }
+    if (textIn == "greet the orc" && listItem.includes("inn")) {
+        listItem.push(textIn);
+        text = "You greet the orc. He looks at you with destain, orcs and elves have always hated each other. The orc seems to struggle with keeping his eyes open, and all of the sudden he falls down on the floor, dead. Someone should have tried to stop the orcs decadence, a like someone with the power of a text input field. But you quickly shakes of these meta thoughts.   ";
+        listItem.push(text);
+        respons();
+    }
 
 
     //#endregion
@@ -208,7 +231,7 @@ function userInput(form) {
  */
 function respons() {
     let textPrint = "";
-    let copyOfListItem = listItem.slice(); //Wth is slice? https://stackoverflow.com/questions/7486085/copy-array-by-value
+    let copyOfListItem = listItem.slice();
     let x = copyOfListItem.length;
 
 
@@ -233,14 +256,3 @@ function respons() {
     document.getElementById("inputField").value = ""; // clears the input field 
 
 }
-
-
-
-
-
-
-
-
-
-
-
