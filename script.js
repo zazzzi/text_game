@@ -220,16 +220,16 @@ function respons() {
     }
 
     /** 
-     * Adds a break to the lines that are written into the DOM and prints the list
+     * Adds a break to the lines that are written into the DOM and creates whats going to be written into the DOM
      */
     for (let item of copyOfListItem) {
         textPrint += item + " <br/>";
     }
 
     /**
-     * Writes the text in the DOM 
+     * Writes the textPrint in the DOM 
      */
-    document.getElementById("systemText").innerHTML = textPrint;
+    document.getElementById("systemText").innerHTML = textPrint; 
     document.getElementById("inputField").value = ""; // clears the input field 
 
 }
