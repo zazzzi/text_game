@@ -3,12 +3,11 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
-
-html, body {
-    height: 100%;
+body {
+    background-color: rgb(53, 49, 49);
 }
-
 /*  Global Classes  */
 .center {
     align-items: center;
@@ -22,33 +21,55 @@ html, body {
 .stretch {
     width: 100%;
 }
+.fontColour {
+    color: blanchedalmond;
+}
 
 /* The titel */
 .gameTitel {
-    margin-top: 1rem;
+    margin-top: 3rem;
     margin-bottom: 4rem;
 }
 
 /* System text  */
-.systemTextCSS {
-    margin: 0.5rem;
+.systemTextStyle {
+    margin: 0.5rem 3rem;
     font-size: large;
 }
 
 /*  Css for the start button and user input */
-.startButton {
-    margin-right: 0.2rem;
-    margin-left: 0.2rem;
-}
 .inputDiv {
     position: fixed;
     bottom: 0;
- 
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 1.5rem 0 1.5rem 0;
 }
+.formStyle {
+    width: 100%;
+    margin: 0 1rem;
+}
+.startButton {
+    margin-right: 0.2rem;
+    margin-left: 1rem;
+    height: 4rem;
+    width: 8rem;
+}
 .userInputStyle {
-    width: 90%;
-    height: 2rem;
-    left: 0;
+    width: 100%;
+    height: 3rem;
+    color: blanchedalmond;
+
+    border: none;
+    border-bottom: 0.1rem solid blanchedalmond;
+    background-color: rgb(53, 49, 49);
+}
+.userInputStyle:focus {
+    outline: none;
+}
+.submitButton {
+    height: 4rem;
+    width: 6rem;
+    margin-left: 1rem;
 }

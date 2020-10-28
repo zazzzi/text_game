@@ -14,23 +14,23 @@
 </head>
 
 <body>
-    <h1 id="titel" class="gameTitel flex center">The Adventure</h1>
+    <h1 id="titel" class="fontColour gameTitel flex center">The Adventure</h1>
     <div class="gameContainer">
-        <div id="systemText" class="systemTextCSS">
+        <div id="systemText" class="systemTextStyle fontColour">
 
-            <p> Welcome to the greatest adventure ever. Press the start button to begin your adventure.
+            <p class="fontColour"> Welcome to the greatest adventure ever. Press the start button to begin your adventure.
             </p>
         </div>
 
 
         <div class="inputDiv stretch flex center">
 
-            <button onclick="startGame()" class="startButton">Start</button>
+            <button id="startButton" onclick="startGame()" class="startButton">Start</button>
 
-            <form id="userInput" class="stretch center" onsubmit="return false" >
+            <form id="userInput" class="flex center formStyle" onsubmit="return false" >
 
-                <input id="inputField" class="userInputStyle" autocomplete="off" type="text" placeholder="Input answer here..."> 
-                <input type="submit" id="buttonSendInput" onclick="userInput(this.form)" value="Send..">
+                <input type="text"  id="inputField" class="userInputStyle" autocomplete="off" placeholder="Input answer here..."> 
+                <input type="submit" class="submitButton" onclick="userInput(this.form)" value="Send..">
 
             </form>
 
