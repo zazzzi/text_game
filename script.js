@@ -38,27 +38,24 @@ function userInput(form) {
     /**
      * Mage quest line and all the different if-statements that controls the storyline.
      */
-    if (textIn == "mage") {
+    if (textIn == "mage" ) {
         listItem.push(textIn);
-        text = "Are you sure? Yes/No"
-
-        promptIncorrect = true;
-        while (promptIncorrect) { // Practiced making prompt and while loop
-
-            let answerPrompt = prompt(text).toLowerCase();
-            if (answerPrompt == 'no') {
-                promptIncorrect = false;
-                startGame();
-            }
-            else if (answerPrompt == "yes") {
-                promptIncorrect = false;
-                text = "You are a talented mage, sitting in a library, holding a tome of the arcane arts. <br/> Would you like to <strong>read</strong> the tome or <strong>explore</strong> the library?";
-                listItem.push(text);
-                document.getElementById("titel").innerHTML = "The Mage";
-                respons();
-            }
-        }
+        text = "Are you sure? Yes/No";
+        listItem.push(text);
+        respons();
     }
+    if (textIn == "yes" && listItem.includes("mage")) {
+        listItem.push(textIn);
+        text = "You are a talented mage, sitting in a library, holding a tome of the arcane arts. <br/> Would you like to <strong>read</strong> the tome or <strong>explore</strong> the library?";
+        listItem.push(text);
+        document.getElementById("titel").innerHTML = "The Mage";
+        respons();
+    } else if (textIn == "no" && listItem.includes("mage")) {
+        listItem.push(textIn);
+        respons();
+        startGame();
+    }
+
     if (textIn == "read" && listItem.includes("mage")) {
         listItem.push(textIn);
         text = "You sit down on a nearby chair. Open the tome and start reading about the wonders of ancient magics. <br/> While sitting down you realise that reading are for fucking looser. You burn down the library with your fire magic and go to the local bordello. <br/> <br/> VICTORY! Only nerds read, and you are a cool mage.";
@@ -101,27 +98,24 @@ function userInput(form) {
     /**
      * Barbarian quest line start here, all the if-statements that controls the storyline
      */
-    if (textIn == "barbarian") {
+    if (textIn == "barbarian" && !listItem.includes("mage") && !listItem.includes("rogue")) {
         listItem.push(textIn);
-        text = "Are you sure? Yes/No"
-
-        promptIncorrect = true;
-        while (promptIncorrect) { // Practiced making prompt and while loop
-
-            let answerPrompt = prompt(text).toLowerCase();
-            if (answerPrompt == 'no') {
-                promptIncorrect = false;
-                startGame();
-            }
-            else if (answerPrompt == "yes") {
-                promptIncorrect = false;
-                text = "You take another sip from your ale. Life as an orc barbarian is not that complicated. Drinking, pillaging and robbing sweet old ladies. <br/> You are drunk, very drunk. Maybe you should find someone to <strong>fight</strong>, or maybe <strong>go east</strong> and look for your barbarian clan?";
-                listItem.push(text);
-                document.getElementById("titel").innerHTML = "The Barbarian";
-                respons();
-            }
-        }
+        text = "Are you sure? Yes/No";
+        listItem.push(text);
+        respons();
     }
+    if (textIn == "yes" && listItem.includes("barbarian")) {
+        listItem.push(textIn);
+        text = "You take another sip from your ale. Life as an orc barbarian is not that complicated. Drinking, pillaging and robbing sweet old ladies. <br/> You are drunk, very drunk. Maybe you should find someone to <strong>fight</strong>, or maybe <strong>go east</strong> and look for your barbarian clan?";
+        listItem.push(text);
+        document.getElementById("titel").innerHTML = "The Barbarian";
+        respons();
+    } else if (textIn == "no" && listItem.includes("barbarian")) {
+        listItem.push(textIn);
+        respons();
+        startGame();
+    }
+
     if (textIn == "fight" || textIn == "go east" && listItem.includes("barbarian")) {
         listItem.push(textIn);
         text = "Even though a voice in you head is trying to tell you to do something, you feel the need to drink more. You order in four more beers and in one chug, down all four. <br/> You start feeling dizzy. Maybe you should <strong>drink water</strong> or <strong>lay down</strong>.";
