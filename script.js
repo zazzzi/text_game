@@ -25,8 +25,11 @@ function userInput(form) {
 
     //#region All the different if-statements for the whole quest line
 
-    //#region Mage -- The mage quest line starts here
+    //#region Mage
 
+    /**
+     * Mage quest line and all the different if-statements that controls the storyline.
+     */
     if (textIn == "mage") {
         listItem.push(textIn);
         text = "Are you sure? Yes/No"
@@ -82,7 +85,11 @@ function userInput(form) {
 
     //#endregion
 
-    //#region Barbarian -- Barb quest line starts here
+    //#region Barbarian
+
+    /**
+     * Barbarian quest line start here, all the if-statements that controls the storyline
+     */
     if (textIn == "barbarian") {
         listItem.push(textIn);
         text = "Are you sure? Yes/No"
@@ -128,7 +135,11 @@ function userInput(form) {
 
     //#endregion
 
-    //#region Rogue -- Rogue quest line starts here 
+    //#region Rogue
+
+    /**
+     * Rogue quest lines start here, all the if statements that controls the storyline
+     */
     if (textIn == "rogue" && !listItem.includes("mage") && !listItem.includes("barbarian")) {
         console.log("rogue")
         listItem.push(textIn);
@@ -215,9 +226,10 @@ function userInput(form) {
     }
     if (textIn == "greet the orc" && listItem.includes("inn")) {
         listItem.push(textIn);
-        text = "You greet the orc. He looks at you with destain, orcs and elves have always hated each other. The orc seems to struggle with keeping his eyes open, and all of the sudden he falls down on the floor, dead. Someone should have tried to stop the orcs decadence, a like someone with the power of a text input field. But you quickly shakes of these meta thoughts.   ";
+        text = "You greet the orc. He looks at you with destain, orcs and elves have always hated each other. The orc seems to struggle with keeping his eyes open, and all of the sudden he falls down on the floor, dead. Someone should have tried to stop the orcs decadence, a like someone with the power of a text input field. But you quickly shake this meta thought, it's to late now anyways.<br/><br/> END OF THE LINE! This quest line might continue in the future, but for now ends here in a sad display of alcoholism.";
         listItem.push(text);
         respons();
+        // VICTORY
     }
 
 
