@@ -9,6 +9,7 @@ let listItem = [];
  * Starts the game if user presses the Start html button and clears array
  */
 function startGame() {
+    document.getElementById("startButton").innerHTML = "Start";
     listItem = [];
     let qtClass = document.getElementById('systemText').innerHTML =
         'In this great adventure, what are you? A <strong>mage</strong>, a <strong>barbarian</strong> or a <strong>rogue</strong>?';
@@ -17,11 +18,18 @@ function startGame() {
 }
 
 /**
+ * Changes the start button to restart when user reaches end of storyline
+ */
+function restart() {
+    document.getElementById("startButton").innerHTML = "Restart";
+}
+
+/**
  * Function that records the user inputs 
  * @param {HTMLFormElement} form 
  */
 function userInput(form) {
-    textIn = form.inputField.value.toLowerCase();
+   let textIn = form.inputField.value.toLowerCase();
 
     //#region All the different if-statements for the whole quest line
 
@@ -56,6 +64,7 @@ function userInput(form) {
         text = "You sit down on a nearby chair. Open the tome and start reading about the wonders of ancient magics. <br/> While sitting down you realise that reading are for fucking looser. You burn down the library with your fire magic and go to the local bordello. <br/> <br/> VICTORY! Only nerds read, and you are a cool mage.";
         listItem.push(text);
         respons();
+        restart();
 
         // VICTORY! 
 
@@ -73,6 +82,7 @@ function userInput(form) {
         text = "You attack the goblins with all of your might. Charging up your most powerful spell, you drain power from the air around you. <br/>You combine the arts of frost magic and fire magic, your hands glowing with ice and flames and just when you're about to let this monstrosity of a spell loose, you roll a natural 1... <br/>Your critical fail results in you slipping on a banana peel and breaking your neck on a nearby chair. <br/><br/> DEATH. Fighting is not always the answer and as a mage of the highest order you should know this.";
         listItem.push(text);
         respons();
+        restart();
         // DEATH! 
     }
     if (textIn == "befriend" && listItem.includes("explore")) {
@@ -80,6 +90,7 @@ function userInput(form) {
         text = "You clear your troat, *erhmm*. <br/> '- Greetings, short green ones, what brings you to this library?' <br/> The goblin closes to you looks at you and responds '- We are here to learn about the language of the javasqriptians!' <br/> '- Oh word?' you say as the goblins seems to ready their weapons for an attack. ' - Then all you need to know is that you can never use to many if-statements' <br/> Your words seems to hurt the goblins, as if this is the dumbest thing they've ever heard. You repeat yourself. <br/> ' - I really mostly use anything except if statements in this project at least' you scream at the goblins. Upon hearing this meta-statement the goblins all self combust and fall down in small piles of ash.<br/><br/> VICTORY. You have defeated the goblins using only your wits, this is for sure the pinnacle of you career as a mage.";
         listItem.push(text);
         respons();
+        restart();
         //Victory! 
     }
 
@@ -108,7 +119,6 @@ function userInput(form) {
                 listItem.push(text);
                 document.getElementById("titel").innerHTML = "The Barbarian";
                 respons();
-                // DEATH!
             }
         }
     }
@@ -129,6 +139,8 @@ function userInput(form) {
         text = "As you down the last ale, you feel the darkness catching up to you. All the horrible things you've done in your life flash before your eyes as you take you last breath. The eternal flames of hell awaits. <br/><br/> DEATH! You died from alcohol poisoning, but no one will miss your sorry ass.";
         listItem.push(text);
         respons();
+        restart();
+        // DEATH 
     }
  
 
@@ -182,6 +194,7 @@ function userInput(form) {
         text = "The old lady gives you a small bag of gold and thanks you once again. You leave her, knowing that you did good today. <br/><br/> VICTORY! Your good deeds payed of in the end, and tonight you will feast!";
         listItem.push(text);
         respons();
+        restart();
         //VICTORY
 
     }
@@ -190,6 +203,7 @@ function userInput(form) {
         text = "You look the lady in the eyes. There is a connection between you, none of you can deny it. ' - I can take gold from such a hot old lady' you say. ' - Single hot old lady.' she corrects you. <br/><br/> VICTORY! Not only did you do good, but you found the love of your life. You and the old noblewoman lives happily ever after.";
         listItem.push(text);
         respons();
+        restart();
         // VICTORY! 
     }
     if (textIn == "steal" && listItem.includes("market")) {
@@ -197,6 +211,7 @@ function userInput(form) {
         text = "You sneak up on the group, trying to find the right time to swoop in and steal the old lady's bag. You're just about to snatch the bag, but unbeknownst to you and your fellow robbers, the old lady is a karate master.<br/> The grandma' kicks all of your asses with one hand behind her back. You fall down to the ground and hear the faint sound of guards coming around the corner. <br/><br/> ARRESTED. Some old ladies knows karate, never forget that.";
         listItem.push(text);
         respons();
+        restart();
         //DEATH
     }
     if (textIn == "ignore" && listItem.includes("market")) {
@@ -210,6 +225,7 @@ function userInput(form) {
         text = "You hastily grab the pie and run for the nearest back alley. You go hard on the pie, barely chewing each bite. After gulping down the whole pie, you feel your stomach vibrating. Oh no... Time to find the nearest bathroom...<br/><br/><s>DEATH</s> <s>DEFEAT</s> DIARRHEA... This was not a good pie, maybe you should think twice about eating stuff that you find on random markets. Also you're gluten intolerant, how could you forget about that?   ";
         listItem.push(text);
         respons();
+        restart();
         //DEATH 
     }
     if (textIn == "pick the lock" && listItem.includes("ignore")) {
@@ -229,6 +245,7 @@ function userInput(form) {
         text = "You greet the orc. He looks at you with destain, orcs and elves have always hated each other. The orc seems to struggle with keeping his eyes open, and all of the sudden he falls down on the floor, dead. Someone should have tried to stop the orcs decadence, a like someone with the power of a text input field. But you quickly shake this meta thought, it's to late now anyways.<br/><br/> END OF THE LINE! This quest line might continue in the future, but for now ends here in a sad display of alcoholism.";
         listItem.push(text);
         respons();
+        restart();
         // VICTORY
     }
 
