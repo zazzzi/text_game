@@ -15,6 +15,7 @@ function startGame() {
         'In this great adventure, what are you? A <strong>mage</strong>, a <strong>barbarian</strong> or a <strong>rogue</strong>?';
     listItem.push(qtClass);
     document.getElementById("titel").innerHTML = "The Adventure";
+
 }
 
 /**
@@ -38,7 +39,7 @@ function userInput(form) {
     /**
      * Mage quest line and all the different if-statements that controls the storyline.
      */
-    if (textIn == "mage" ) {
+    if (textIn == "mage" && !listItem.includes("rogue") && !listItem.includes("barbarian")) {
         listItem.push(textIn);
         text = "Are you sure? Yes/No";
         listItem.push(text);
@@ -84,7 +85,7 @@ function userInput(form) {
     }
     if (textIn == "befriend" && listItem.includes("explore")) {
         listItem.push(textIn);
-        text = "You clear your troat, *erhmm*. <br/> '- Greetings, short green ones, what brings you to this library?' <br/> The goblin closes to you looks at you and responds '- We are here to learn about the language of the javasqriptians!' <br/> '- Oh word?' you say as the goblins seems to ready their weapons for an attack. ' - Then all you need to know is that you can never use to many if-statements' <br/> Your words seems to hurt the goblins, as if this is the dumbest thing they've ever heard. You repeat yourself. <br/> ' - I really mostly use anything except if statements in this project at least' you scream at the goblins. Upon hearing this meta-statement the goblins all self combust and fall down in small piles of ash.<br/><br/> VICTORY. You have defeated the goblins using only your wits, this is for sure the pinnacle of you career as a mage.";
+        text = "You clear your troat, *erhmm*. <br/> '- Greetings, short green ones, what brings you to this library?' <br/> The goblin closes to you looks at you and responds '- We are here to learn about the language of the javasqriptians!' <br/> '- Oh word?' you say as the goblins seems to ready their weapons for an attack. ' - Then all you need to know is that you can never use to many if-statements' <br/> Your words seems to hurt the goblins, as if this is the dumbest thing they've ever heard. You repeat yourself. <br/> ' - I didn't really use anything except if statements in this project at least' you scream at the goblins. Upon hearing this meta-statement the goblins all self combust and fall down in small piles of ash.<br/><br/> VICTORY. You have defeated the goblins using only your wits, this is for sure the pinnacle of you career as a mage.";
         listItem.push(text);
         respons();
         restart();
@@ -137,38 +138,32 @@ function userInput(form) {
         // DEATH 
     }
  
-
-
+    
+    
     //#endregion
-
+    
     //#region Rogue
-
+    
     /**
      * Rogue quest lines start here, all the if statements that controls the storyline
      */
     if (textIn == "rogue" && !listItem.includes("mage") && !listItem.includes("barbarian")) {
-        console.log("rogue")
         listItem.push(textIn);
-        text = "Are you sure? Yes/No"
+        text = "Are you sure? Yes/No";
         listItem.push(text);
-        promptIncorrect = true;
-        while (promptIncorrect) { // practiced making a while-loop with a prompt
-            let answerPrompt = prompt(text).toLowerCase();
-            if (answerPrompt == 'no') {
-                promptIncorrect = false;
-                startGame();
-            }
-            else if (answerPrompt == "yes") {
-                promptIncorrect = false;
-                text = "From the shadows, you appear. A slender elf with two pointy daggers hanging from each side of your waist. You feel hungry and exhausted, not a lot of prey in the last couple of days. <br/> You need to find something to eat. You know that there is an inn just around the corner, but they have good security. There is also a market across town. Do you want to go to the <strong>market</strong> or the <strong>inn</strong>?";
-                listItem.push(text);
-                document.getElementById("titel").innerHTML = "The Rogue";
-                respons();
-            }
-        }
-
+        respons();
     }
-
+    if (textIn == "yes" && listItem.includes("rogue")) {
+        listItem.push(textIn);
+        text = "From the shadows, you appear. A slender elf with two pointy daggers hanging from each side of your waist. You feel hungry and exhausted, not a lot of prey in the last couple of days. <br/> You need to find something to eat. You know that there is an inn just around the corner, but they have good security. There is also a market across town. Do you want to go to the <strong>market</strong> or the <strong>inn</strong>?";
+        listItem.push(text);
+        document.getElementById("titel").innerHTML = "The Rogue";
+        respons();
+    } else if (textIn == "no" && listItem.includes("rogue")) {
+        listItem.push(textIn);
+        respons();
+        startGame();
+    }
     if (textIn == "market" && listItem.includes("rogue")) {
         listItem.push(textIn);
         text = "On your way to the market you hear a commotion. You see an sweet old lady being robbed by two shady looking guys with swords. The old lady is dressed like a noblewoman.<br/> You the rogue in you sees the opportunity to steel the old lady's purse while she is struggling with the robbers, but maybe you should <strong>help</strong> the old lady? Or even better, <strong>ignore</strong> the whole thing?";
@@ -259,7 +254,7 @@ function respons() {
 
 
     /**
-     * A really complicated way to add > inb4 user inputs 
+     * A really complicated way to add > inb4 user inputs (or at least complicated in the time it took me to figure this out...)
      */
     for (let i = 1; i < x; i += 2) {
         copyOfListItem[i] = "> " + copyOfListItem[i];
@@ -276,6 +271,6 @@ function respons() {
      * Writes the textPrint in the DOM 
      */
     document.getElementById("systemText").innerHTML = textPrint; 
-    document.getElementById("inputField").value = ""; // clears the input field 
+    document.getElementById("inputField").value = ""; // clears the input field after each input
 
 }
